@@ -60,11 +60,21 @@
 
 - (void)addPluginsMenu
 {
-    NSMenuItem *menuItem = [[NSApp mainMenu] itemWithTitle:@"Edit"];
-    [[menuItem submenu] addItem:[NSMenuItem separatorItem]];
+    // Add Plugins menu next to Window menu
+    NSMenu *mainMenu = [NSApp mainMenu];
+    NSMenuItem *pluginsMenuItem = [mainMenu itemWithTitle:@"Plugins"];
+    if (!pluginsMenuItem) {
+        pluginsMenuItem = [[NSMenuItem alloc] init];
+        pluginsMenuItem.title = @"Plugins";
+        pluginsMenuItem.submenu = [[NSMenu alloc] initWithTitle:pluginsMenuItem.title];
+        NSInteger windowIndex = [mainMenu indexOfItemWithTitle:@"Window"];
+        [mainMenu insertItem:pluginsMenuItem atIndex:windowIndex];
+    }
+    
+    // Add Subitem
     NSMenuItem *actionMenuItem = [[NSMenuItem alloc] initWithTitle:@"Do Action" action:@selector(doMenuAction) keyEquivalent:@""];
     [actionMenuItem setTarget:self];
-    [[menuItem submenu] addItem:actionMenuItem];
+    [pluginsMenuItem.submenu addItem:actionMenuItem];
 }
 
 
