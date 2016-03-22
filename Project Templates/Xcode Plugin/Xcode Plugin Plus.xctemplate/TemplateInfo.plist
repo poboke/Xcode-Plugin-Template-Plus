@@ -33,6 +33,13 @@
 				<string>$(HOME)</string>
 				<key>INSTALL_PATH</key>
 				<string>/Library/Application Support/Developer/Shared/Xcode/Plug-ins</string>
+				<key>FRAMEWORK_SEARCH_PATHS</key>
+                <array>
+                    <string>$(inherited)</string>
+                    <string>$(DEVELOPER_DIR)/../Frameworks</string>
+                    <string>$(DEVELOPER_DIR)/../SharedFrameworks</string>
+                    <string>$(DEVELOPER_DIR)/../OtherFrameworks</string>
+                </array>
 				<key>WRAPPER_EXTENSION</key>
 				<string>xcplugin</string>
 				<key>MACH_O_TYPE</key>
